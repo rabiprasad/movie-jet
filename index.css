@@ -1,0 +1,77 @@
+
+:root{
+
+}
+
+*,
+::after,
+::before{
+    box-sizing: border-box;
+    margin-top: 0px;
+}
+
+body{
+    margin: 0px;
+
+}
+
+
+
+.heading{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.genre{
+   list-style: none; 
+   padding: 0px 3%;
+   display: flex;
+   flex-direction: row;
+   overflow: auto;
+   white-space: nowrap;
+    margin-right: 3rem;
+}
+.genre::-webkit-scrollbar{
+    display: none;
+}
+
+.genre > li{
+    margin: 0px 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    float: left;
+}
+.current-genre{
+    /* text-indent: .8em; */
+    font-weight: 600;
+}
+.content-box{
+    width: 100vw;
+    margin: 30px 10px 10px 10px;
+    display: grid;
+    grid-template-columns:repeat(auto-fill,300px);
+    grid-template-rows: repeat(auto-fill,250px);
+    gap: 20px;
+    justify-content: center;
+
+}
+.movie-template{
+    /* width: 400px;*/
+    overflow: hidden;
+    background-color: aquamarine;
+    
+}
+.movie-template img{
+    width: 100%;
+}
+.movie-template span{
+    float: right;
+    background-color: orange;
+}
+.movie-template h4{
+    display: inline-block;
+}
+:is(.movie-template) h4, span{
+    padding: 0px 10px;
+}
