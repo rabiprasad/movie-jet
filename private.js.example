@@ -1,0 +1,6 @@
+//Note: Rename this file as 'private.js'.
+
+//TMDB API has be used in this project.
+//Put your TMDB Api key below.
+
+export const API_KEY = "YOUR API KEY HERE";

@@ -4,48 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- links -->
     <link rel="icon" href="./resources/hulu icon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/mediaQueries.css">
+    <!-- scripts -->
     <script type="module" src="./javascript/app.js" defer></script>
-    <title>videojet</title>
+    <script src="https://kit.fontawesome.com/e79691ec58.js" crossorigin="anonymous" defer></script>
+
+    <title>MovieJet</title>
 </head>
 <body>
     <header>
-        <h1 class="heading">videojet</h1>
-    </header>
-    <nav>
-        <ul class="genre">
-            <li data-genre-id="0">Trending</li>
-            <!-- Different genre will be add as list item by index.j-->
+        <h1 class="heading">MovieJet</h1>
+        <ul class="category-bar">
+            <li id="now_playing" class="current-category">Trending</li>
+            <li id="popular">Popular</li>
+            <li id="top_rated">Top rated</li>
+            <li id="upcoming">Upcoming</li>
         </ul>
-    </nav>
+        <div class="search-bar">
+            <div class="search-box"></div>
+            <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
     <section class="content-box">
-        <div class="movie-template">
-            <img src="./resources/depositphotos_235207814-stock-photo-landscape-winter-hokkaido.jpg" alt="">
-            <h4>title</h4>
-            <span>26-11-2020</span>
-            
-        </div>
-        <div class="movie-template">
-            <!-- <img src="./resources/depositphotos_235207814-stock-photo-landscape-winter-hokkaido.jpg" alt="">
-            <h4>title</h4>
-            <span>26-11-2020</span>
-             -->
-        </div>
-        <div class="movie-template">
-            <!-- <img src="./resources/depositphotos_235207814-stock-photo-landscape-winter-hokkaido.jpg" alt="">
-            <h4>title</h4>
-            <span>26-11-2020</span>
-             -->
-        </div>
-        <div class="movie-template">
-            <!-- <img src="./resources/depositphotos_235207814-stock-photo-landscape-winter-hokkaido.jpg" alt="">
-            <h4>title</h4>
-            <span>26-11-2020</span>
-             -->
-        </div>
-        
-        
+        <!-- Dummy div below, all these div are added dynamically by addContent.js  -->
+        <!-- <div class="movie-template">
+            <img src="https://image.tmdb.org/t/p/w300/${e.poster_path}" alt="Movie Poster">
+            <h4 data-rating="${e.vote_average}" >${title}</h4>
+            <div class="release-date">${e.release_date || ""}</div>  
+        </div> -->
     </section>
 </body>
 </html>

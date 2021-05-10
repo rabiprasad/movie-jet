@@ -1,0 +1,33 @@
+/*-----media queries----------*/
+@media (max-width:500px){
+    
+    .heading{
+        order: -2; 
+        margin-bottom: 0px;
+    }/*
+    .category-bar li{
+        float: left;
+    }*/
+    .search-bar{
+        width: 90%;
+    }
+    .content-box{
+        grid-template-columns:repeat(2,1fr);
+    } 
+    header{
+        flex-wrap: wrap;
+    }
+    .featured{
+        margin-top: 10px;
+    }
+
+}
+
+@media (min-width:500px){
+    /* .heading{
+        position: absolute;
+        transform:translateX(-50%) ;
+        left: 50%;
+        margin:0px;
+    } */
+}
