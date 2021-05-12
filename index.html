@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- links -->
-    <link rel="icon" href="./resources/hulu icon.svg" type="image/x-icon">
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/mediaQueries.css">
+    <link rel="stylesheet" href="./css/contentSection.css">
+    <link rel="stylesheet" href="./css/movieDetail.css">
+    <link rel="stylesheet" href="./css/errorPage.css">
     <!-- scripts -->
     <script type="module" src="./javascript/app.js" defer></script>
     <script src="https://kit.fontawesome.com/e79691ec58.js" crossorigin="anonymous" defer></script>
@@ -23,10 +24,10 @@
             <li id="top_rated">Top rated</li>
             <li id="upcoming">Upcoming</li>
         </ul>
-        <div class="search-bar">
-            <div class="search-box"></div>
-            <button class="search-button"><i class="fas fa-search"></i></button>
-        </div>
+        <form action="" class="search-bar">
+            <input type="text" class="search-box" placeholder="Enter movie name">
+            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+        </form>
     </header>
     <section class="content-box">
         <!-- Dummy div below, all these div are added dynamically by addContent.js  -->
@@ -35,6 +36,19 @@
             <h4 data-rating="${e.vote_average}" >${title}</h4>
             <div class="release-date">${e.release_date || ""}</div>  
         </div> -->
+    </section>
+    
+    <!-- section is for displaying movie detail -->
+    <section class="movie-detail-container">
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+    </section>
+
+    <!-- error indicator -->
+    <section class="error-page">
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i> Oops! <br> 
+            Some Error Occurred  
+        </div>
     </section>
 </body>
 </html>

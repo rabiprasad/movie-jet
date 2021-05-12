@@ -1,0 +1,12 @@
+.error-page{
+    display: none;
+    position: fixed;
+    top: 20vh;
+    margin: 10%;
+}
+.error-message{
+    font-size: 4rem;
+}
+.show-error-message{
+    display: block;
+}

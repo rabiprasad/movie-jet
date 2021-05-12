@@ -1,16 +1,18 @@
+const errorPage = document.querySelector('.error-page');
+
 //fetches movies from tmdb using appropriate url.
 export function addContent(url){
-        fetch(url)
-        .then(response => {
-            return response.json();
-        })
+    fetch(url)
+        .then(response => response.json())
         .then(data => {
+            const page = url.slice(-1);            //determining page no. form last character of url.
+            if(data.results.length <= 0 && url.slice(-1) == 1){
+                errorPage.classList.add('show-error-message');
+            }
             displayContent(data);
         })
-        .catch(err => {
-            console.log(err);
-        });
-    }    
+        .catch(err => console.log(err));
+}    
     
 //Adds movies in webpage.
 function displayContent(data){
@@ -19,6 +21,7 @@ function displayContent(data){
 
     results.forEach(e => {
         const element = document.createElement('div');
+        element.dataset.genre = e.genre_ids;
         element.dataset.id = e.id;
         element.dataset.popularity = e.popularity;
         let title = e.name || e.original_name || e.original_title;

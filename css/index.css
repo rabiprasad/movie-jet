@@ -1,5 +1,10 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&family=Righteous&display=swap');
+
 :root{
     --page-background-color:grey;
+    --font-heading1:'Original Surfer', cursive;
+    --font-heading2:  'Righteous', cursive;
 }
 *,::after,::before{
     box-sizing:border-box;
@@ -13,7 +18,8 @@ header{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 10px 5px 5px 5px;
+    margin: 10px 5px 50px 5px;
+    gap: 10px;
 }
 
 
@@ -23,6 +29,7 @@ header{
     order: 1;
     margin:0px;
     justify-self: center;
+    font-family: var(--font-heading2);
 }
 .category-bar{
     display:flex;
@@ -32,6 +39,7 @@ header{
     padding:0;
     border-radius:20px;
     border:2px solid black ;
+    margin: 0px;
     
 }
 .category-bar li{
@@ -54,58 +62,61 @@ header{
     overflow:hidden;
     order: 2;
 }
+.danger{
+    border-color: red;
+}
+.search-box{
+    height: 100%;
+    width: 85%;
+    resize: none;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: text;
+    outline: none;
+    border: none;
+}
+
+
 .search-button{
     display:grid;
     place-items:center;
     float:right;
     height:100%;
-    width:max(45px,10%);
+    width: 15%;
     border:none;
     border-left:2px solid #868181;
     background:0 0;
-    font-size:1.5rem
-}
-/* section content box */
-.content-box{
-    width:100%;
-    margin:30px 0 20px 0;
-    padding:0 10px;
-    display:grid;
-    grid-template-columns:repeat(auto-fill,200px);
-    gap:15px;
-    justify-content:center
-}
-.movie-template{
-    overflow:hidden;
-    cursor:pointer
-}
-.movie-template:hover{
-    transform:scale(1.05);
-    filter:drop-shadow(0 0 8px)
-}
-.movie-template h4::before{
-    display:grid;
-    place-items:center;
-    content:attr(data-rating);
-    position:absolute;
-    float:right;
-    width:27px;
-    height:27px;
-    top:-27px;
-    right:-5px;
-    background-color:var(--page-background-color);
-    padding:3px;
-    border-radius:20px
-}
-.movie-template img{
-    width:100%;
-    border-radius:15px 15px 10px 10px
-}
-.movie-template .release-date{
-    text-align:center
-}
-.movie-template h4{
-    position:relative;
-    margin:5px 10px
+    font-size:1.5rem;
+    cursor : pointer;
 }
 
+/*-----media queries----------*/
+@media (max-width:830px){
+    
+    .heading{
+        order: -2; 
+        margin-bottom: 0px;
+    }/*
+    .category-bar li{
+        float: left;
+    }*/
+    .search-bar{
+        width: 90%;
+    }
+    header{
+        flex-wrap: wrap;
+    }
+    .featured{
+        margin-top: 10px;
+    }
+
+}
+
+@media (min-width:500px){
+    /* .heading{
+        position: absolute;
+        transform:translateX(-50%) ;
+        left: 50%;
+        margin:0px;
+    } */
+}
