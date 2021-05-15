@@ -1,5 +1,5 @@
 import * as endPoint from "./endPoint.js";
-import {showMovieDetail, getMovieId} from "./movieDetail.js";
+import {showMovieDetail} from "./movieDetail.js";
 import {addContent} from './addContent.js';
 
 //selecting elements from web page.
@@ -13,14 +13,15 @@ let searchBoxStatus = false;  //keeps track if search box is active of not.
 let page = 1;      //page number to fetch movies from specific page
 
 //Adds movies(now_playing i.e. trending) when page is loaded for first time.
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     currentCategory = 'now_playing';
-    addContent(endPoint.movieCollectionURL(currentCategory,page++));
-    addContent(endPoint.movieCollectionURL(currentCategory,page++));
-    
+    await addContent(endPoint.movieCollectionURL(currentCategory,page++));
+    await addContent(endPoint.movieCollectionURL(currentCategory,page++));
+    fillWholePage();    
     highlightCurrentCategory(currentCategory);
     //fetchConfig();
 });
+
 
 //Adds movies when specific category is selected.
 categoryBar.addEventListener('click', e => {
@@ -38,7 +39,7 @@ categoryBar.addEventListener('click', e => {
 //Adds more movies if user reaches to end of page.
 window.addEventListener('scroll',() => {
     let webPageHeight = document.body.offsetHeight;
-    let screenBottom = window.innerHeight+window.pageYOffset;
+    let screenBottom = window.innerHeight + window.pageYOffset;
     // console.log('webpageHeight: ',webPageHeight);
     // console.log('windows.innerHeight: ',window.innerHeight,'window.pageYOffset',window.pageYOffset);
     // console.log('ScrrenBottom: ',screenBottom);
@@ -107,6 +108,17 @@ function highlightCurrentCategory(currentCategory){
             }
             else {category.classList.remove('current-category');}
         });
+    }
+}
+
+async function fillWholePage(){
+    const webpageHeight = document.body.offsetHeight;
+    const windowHeight = window.innerHeight;
+    //console.log(document.body.offsetHeight, windowHeight);
+    if(windowHeight >= webpageHeight){
+        await addContent(endPoint.movieCollectionURL(currentCategory,page++));
+        //console.log("filling page");
+        fillWholePage();
     }
 }
 /* development functions */

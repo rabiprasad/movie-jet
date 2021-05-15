@@ -1,8 +1,9 @@
 const errorPage = document.querySelector('.error-page');
 
 //fetches movies from tmdb using appropriate url.
-export function addContent(url){
-    fetch(url)
+//function has been make async so that fillWholePage(function) can be synchronies.
+export  async function addContent(url){
+    await fetch(url)
         .then(response => response.json())
         .then(data => {
             const page = url.slice(-1);            //determining page no. form last character of url.
