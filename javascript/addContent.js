@@ -6,7 +6,7 @@ export  async function addContent(url){
     await fetch(url)
         .then(response => response.json())
         .then(data => {
-            const page = url.slice(-1);            //determining page no. form last character of url.
+            const page = url.slice(-1);            //determining page number from last character of url.
             if(data.results.length <= 0 && url.slice(-1) == 1){
                 errorPage.classList.add('show-error-message');
             }

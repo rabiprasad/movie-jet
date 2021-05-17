@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="./css/movieDetail.css">
     <link rel="stylesheet" href="./css/errorPage.css">
     <!-- scripts -->
-    <script type="module" src="./javascript/app.js" defer></script>
+    <!-- <script type="module" src="./javascript/app.js" defer></script> -->
     <script src="https://kit.fontawesome.com/e79691ec58.js" crossorigin="anonymous" defer></script>
 
     <title>MovieJet</title>
 </head>
-<body>
+<body>   <!--TODO:remove class-->
     <header>
         <h1 class="heading">MovieJet</h1>
         <ul class="category-bar">
@@ -29,6 +29,14 @@
             <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
         </form>
     </header>
+
+
+
+
+
+
+
+
     <section class="content-box">
         <!-- Dummy div below, all these div are added dynamically by addContent.js  -->
         <!-- <div class="movie-template">
@@ -38,14 +46,75 @@
         </div> -->
     </section>
     
+
+
+
+
+
+
+
     <!-- section is for displaying movie detail -->
-    <section class="movie-detail-container">
+    <section class="movie-detail-container show-container">  <!--TODO remove show-container class-->
         <div class="close-btn"><i class="fas fa-times"></i></div>
-    </section>
+        <h4 class="movie-name">Mortal Kombat</h4>
+        <span class="genre">Drama</span>
+        <img class="movie-image" src="https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg" width="100%" alt="">
+        
+        <div class="overview">
+            <h4>overview</h4>
+            <p>"Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe."</p>
+        </div>
+
+        <a href=""><div class="watch-trailer">watch trailer</div></a>
+        <h4>Release Date</h4> 
+        <p class="release-date">14-78-45</p>
+    
+        <div class="providers">
+            <h4>Available on</h4>
+            <div>
+                <a data-name="itune" href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN" target="_">
+                    <img src="https://image.tmdb.org/t/p/w45/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg" alt="">
+                </a>
+                <a href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN">
+                <img src="https://image.tmdb.org/t/p/w45/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg" alt="">
+                </a>
+                <a href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN">
+                    <img src="https://image.tmdb.org/t/p/w45/vDCcryHD32b0yMeSCgBhuYavsmx.jpg" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h4>stats</h4>
+            <ul>
+                <li>budget: 545454</li>
+                <li>revenue: 545484</li>
+                <li>popularity: 46845</li>
+                <li>runtime: 120 min</li>
+                <li>Vote count: 6454</li>
+                <li>average vote: 48stars</li>
+            </ul>
+        </div>
+
+        <div class="production-companies">
+            <h4>Production companies</h4>
+            <div data-name="fox"><img src="https://image.tmdb.org/t/p/w45/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png" alt=""></div>
+            <div><img src="https://image.tmdb.org/t/p/w45/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png" alt=""></div>
+            <div><img src="https://image.tmdb.org/t/p/w45/qZCc1lty5FzX30aOCVRBLzaVmcp.png" alt=""></div>
+            <div><img src="https://image.tmdb.org/t/p/w45/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg" alt=""></div>
+        </div>
+
+
+
+
+
+
+
+
 
     <!-- error indicator -->
     <section class="error-page">
-        <div class="error-message">
+        <div class="error-message ">     
             <i class="fas fa-exclamation-triangle"></i> Oops! <br> 
             Some Error Occurred  
         </div>

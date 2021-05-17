@@ -123,7 +123,7 @@ async function fillWholePage(){
 }
 /* development functions */
 function fetchConfig() {
-    fetch(endPoint.fetchConfig.url)
+    fetch("https://api.themoviedb.org/3/configuration?api_key=b3759c68c67b48812f4293db327b6de9")
         .then(response => response.json())
         .then(data => console.log(data));
 }

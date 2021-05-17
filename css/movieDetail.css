@@ -1,25 +1,170 @@
-/********* Movie detail section **********/
 /* using mobile first approach */
+
+/* container css */
+.movie-detail-container *{
+    margin-bottom:0px ;
+    color: white;
+}
+.movie-detail-container h4{
+    font-family: var(--font-heading3);
+    text-transform: capitalize;
+}
 .movie-detail-container{
     display: none;
     position: fixed;
-    width: 80vw;
-    height: 80vh;
-    background-color: rgb(214, 233, 187);
-    left:10vw;
-    top: 10vh;
+    width: 90vw;
+    height: auto;
+    max-height: 80vh;
+    background-image: url("https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg");
+    transform: translateX(-50%);
+    left: 50%;
+    top: 14.5vh;
+    overflow-x: hidden ;
+    overflow-y: auto;
+    padding: 10px;
 }
-.close-btn{
+.movie-detail-container::after{
     position: absolute;
-    background-color: transparent;
-    top: 10px;
-    right: 20px;
-    color: rgb(231, 93, 93);
-    font-size: 10%;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.8);
+    left: 0; top: 0; right: 0; bottom: -70%;
+    z-index: -1;
 }
-.close-btn:hover{
-    color: rgb(230, 6, 6);
-}
-.show-container{
+.show-container{    /* toggles move-detail-visibility*/
     display:block;
+}
+
+.close-btn{
+    position: fixed;
+    background-color: transparent;
+    right: 5px;
+    top: 5px;
+    margin: 5px 10px;
+    font-size: 100%;
+}
+.close-btn i:hover{
+    color: rgb(230, 6, 6);
+    transform: scale(1.5);
+}
+
+/*details css*/
+.movie-detail-container .movie-name{
+    display: inline-block;
+    font: 1.1rem var(--font-heading2);
+    margin:0px;
+    letter-spacing: 0.1rem;
+    margin-right: 10px;
+}
+.genre{
+    display: inline-block;
+    background-color: rgb(13, 156, 61);
+    padding: 2px 8px;
+    border-radius: 5px;
+    color: white;
+    font: .9rem var(--font-para3);
+}
+.movie-image{
+    margin-top: 10px;
+    width: 100%;
+}
+.overview p{
+    font: 0.9rem var(--font-para3);
+    
+}
+.watch-trailer{
+    display: inline-block;
+    background-color: var(--color-matteBlack);
+    border-radius: 5px;
+    color: white;
+    font-family: var(--font-para3);
+    margin-top:10px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+.watch-trailer:hover{
+    background-color:rgb(170, 167, 167);
+}
+.release-date{
+    margin-top: 0px;
+    font-family: var(--font-para2);
+}
+
+.stats p{
+    margin-bottom: 0px;
+}
+.stats ul{ 
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    overflow: auto;
+}
+.stats li{
+    float: left;
+    background-color: bisque;
+    color: black;
+    margin: 3px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: var(--font-list) ;
+}
+.fa-star{
+    color: var(--color-matteBlack);
+}
+
+.production-companies div,   
+.providers a{
+    position: relative;
+}
+.production-companies div{
+    display: inline-block;
+    cursor: pointer;
+}
+.providers a{
+    text-decoration: none;
+    color: black;
+}
+:is(.providers,.production-companies) img{
+    max-height: 45px;
+    width: 45px;
+    background-color: white;
+    margin: 5px 5px 0px 5px;
+    border-radius: 6px;
+    
+}
+/* shows company name on hovering on logo */
+:is(.providers a,.companies-detail div)::after{
+    position: absolute;
+    content: attr(data-name);
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    padding: 5px;
+    font-family: var(--font-para3);
+    border-radius: 5px;
+    bottom: -30px; left: 0px;
+    z-index: 2;
+    white-space: nowrap;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+.companies-detail div::after{
+    bottom: 52px;
+}
+
+:is(.providers a,.companies-detail div):hover::after{
+    transform: scale(1);    
+}
+
+/* media queries */
+@media (min-width:580px) {
+    .movie-detail-container{
+        columns:2;
+        top: 18vh;
+        overflow-y: hidden;
+    }
+}
+@media (min-width:830px){
+    .movie-detail-container{ 
+        width: 70vw;
+    }   
 }

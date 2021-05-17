@@ -1,16 +1,27 @@
 /* imports */
+/* @import "./movieDetail.css"; */
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Itim&family=Montserrat&family=PT+Sans&family=Ubuntu:ital@1&display=swap');
 
 :root{
     --page-background-color:grey;
-    --font-heading1:'Original Surfer', cursive;
     --font-heading2:  'Righteous', cursive;
+    --font-heading3: "proxima-nova","Gotham","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --font-list: 'Itim', cursive;
+    --font-para2: 'PT Sans', sans-serif;
+    --font-para3: 'Montserrat', sans-serif;
+    --font-para4:  'Ubuntu', sans-serif;
 }
 *,::after,::before{
     box-sizing:border-box;
 }
 body{
     margin:0px;
+}
+
+.blur{
+    filter:blur(2px);
 }
 /* header */
 header{
@@ -30,6 +41,7 @@ header{
     margin:0px;
     justify-self: center;
     font-family: var(--font-heading2);
+    letter-spacing: 0.1rem;
 }
 .category-bar{
     display:flex;
