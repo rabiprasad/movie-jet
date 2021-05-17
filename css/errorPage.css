@@ -1,12 +1,19 @@
+/* error page css */
+
 .error-page{
     display: none;
     position: fixed;
-    top: 20vh;
-    margin: 10%;
+    margin-left:10%;
+}
+.fa-exclamation-triangle{
+    color: rgb(182, 0, 0);
 }
 .error-message{
-    font-size: 4rem;
+    font: 3rem var(--font-para2); 
+
 }
+
+/* Toggles visibility of error page */
 .show-error-message{
     display: block;
 }
