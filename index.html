@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- links -->
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/contentSection.css">
     <link rel="stylesheet" href="./css/movieDetail.css">
     <link rel="stylesheet" href="./css/errorPage.css">
+    <link rel="icon" href="./resources/images-logo/website-log.svg">
     <!-- scripts -->
-    <!-- <script type="module" src="./javascript/app.js" defer></script> -->
+    <script type="module" src="./scripts/app.js" defer></script>
     <script src="https://kit.fontawesome.com/e79691ec58.js" crossorigin="anonymous" defer></script>
-
     <title>MovieJet</title>
 </head>
-<body>   <!--TODO:remove class-->
-    <header>
+<body>
+    <header class="main-header">
         <h1 class="heading">MovieJet</h1>
         <ul class="category-bar">
             <li id="now_playing" class="current-category">Trending</li>
@@ -30,94 +30,77 @@
         </form>
     </header>
 
-
-
-
-
-
-
-
+    <!--**** All movies related to search/category are show in this section. ****-->
     <section class="content-box">
-        <!-- Dummy div below, all these div are added dynamically by addContent.js  -->
+        <!-- Elements similar to below elements are added dynamically by addContent.js-->
         <!-- <div class="movie-template">
             <img src="https://image.tmdb.org/t/p/w300/${e.poster_path}" alt="Movie Poster">
-            <h4 data-rating="${e.vote_average}" >${title}</h4>
-            <div class="release-date">${e.release_date || ""}</div>  
+            <h4 class = "movie-name" data-rating="6.5" >Raya and the Last Dragon</h4>
+            <div class="release-date">2021-04-19</div>  
         </div> -->
     </section>
     
-
-
-
-
-
-
-
-    <!-- section is for displaying movie detail -->
-    <section class="movie-detail-container show-container">  <!--TODO remove show-container class-->
-        <div class="close-btn"><i class="fas fa-times"></i></div>
-        <h4 class="movie-name">Mortal Kombat</h4>
-        <span class="genre">Drama</span>
-        <img class="movie-image" src="https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg" width="100%" alt="">
-        
-        <div class="overview">
-            <h4>overview</h4>
-            <p>"Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe."</p>
-        </div>
-
-        <a href=""><div class="watch-trailer">watch trailer</div></a>
-        <h4>Release Date</h4> 
-        <p class="release-date">14-78-45</p>
-    
-        <div class="providers">
-            <h4>Available on</h4>
-            <div>
-                <a data-name="itune" href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN" target="_">
-                    <img src="https://image.tmdb.org/t/p/w45/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg" alt="">
-                </a>
-                <a href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN">
-                <img src="https://image.tmdb.org/t/p/w45/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg" alt="">
-                </a>
-                <a href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN">
-                    <img src="https://image.tmdb.org/t/p/w45/vDCcryHD32b0yMeSCgBhuYavsmx.jpg" alt="">
-                </a>
+    <!--**** section is for displaying movie detail ****-->
+    <section class="movie-detail-container">
+        <!-- Basic information of movie -->
+        <header class="movie-detail-header">
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <h4 class="movie-name"></h4>
+            <span class="genre"></span>
+        </header>
+        <article>
+            <div class="basic-info"></div>
+            <!-- Elements similar to below elements are added dynamically by movieDetail.js-->
+                <!-- <img class="movie-image" src="https://image.tmdb.org/t/p/w780/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg" width="100%" alt="">
+                <div class="overview">
+                    <h4>overview</h4>
+                    <p>"Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe."</p>
+                </div>
+                <a class="watch-trailer" href="#" target="_">watch trailer</a>
+                <h4>Release Date</h4> 
+                <p class="release-date">2021-04-07</p> -->
             </div>
-        </div>
+            <!-- movie providing platform -->
+            <div class="providers">
+                <h4>Available on</h4>
+                <div class="platforms">
+                    <!-- Element groups similar to below elements are added dynamically by movieDetail.js-->
+                    <!-- <a data-name="itune" href="https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN" target="_">
+                        <img src="https://image.tmdb.org/t/p/w45/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg" alt="">
+                    </a> --> 
+                </div>
+            </div>
+            <!-- Some stats about movie -->
+            <div class="stats">
+                <h4>stats</h4>
+                <ul>
+                    <!-- Elements similar to below elements are added dynamically by movieDetail.js-->
+                    <!-- <li>Rating: 7.4<i class="fas fa-star"></i></li>
+                    <li>Popularity: 1845</li>
+                    <li>Runtime: 120 min</li>
+                    <li>Rated by: 6454</li>
+                    <li>Budget: 200.0 M</li>
+                    <li>Revenue: 415.0 M</li> -->
+                </ul>
+            </div>
+            <!-- companies involved in production -->
+            <div class="production-companies">
+                <h4>Production companies</h4>
+                <div class="companies-detail">
+                    <!-- Element groups similar to below elements are added dynamically by movieDetail.js-->
+                    <!-- <div class="company-logo" data-name="fox"><img src="https://image.tmdb.org/t/p/w45/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png" alt=""></div> -->
+                </div>
+            </div>
+        </article>
+    </section>
 
-        <div class="stats">
-            <h4>stats</h4>
-            <ul>
-                <li>budget: 545454</li>
-                <li>revenue: 545484</li>
-                <li>popularity: 46845</li>
-                <li>runtime: 120 min</li>
-                <li>Vote count: 6454</li>
-                <li>average vote: 48stars</li>
-            </ul>
-        </div>
-
-        <div class="production-companies">
-            <h4>Production companies</h4>
-            <div data-name="fox"><img src="https://image.tmdb.org/t/p/w45/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png" alt=""></div>
-            <div><img src="https://image.tmdb.org/t/p/w45/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png" alt=""></div>
-            <div><img src="https://image.tmdb.org/t/p/w45/qZCc1lty5FzX30aOCVRBLzaVmcp.png" alt=""></div>
-            <div><img src="https://image.tmdb.org/t/p/w45/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg" alt=""></div>
-        </div>
-
-
-
-
-
-
-
-
-
-    <!-- error indicator -->
+    <!--**** error indicator ****-->
     <section class="error-page">
-        <div class="error-message ">     
-            <i class="fas fa-exclamation-triangle"></i> Oops! <br> 
-            Some Error Occurred  
+        <div class="error-message">     
+            <p><i class="fas fa-exclamation-triangle"></i> Oops!</p> 
+            <p>Some Error Occurred.</p>  
         </div>
     </section>
+
 </body>
 </html>

@@ -1,8 +1,9 @@
 import * as endPoint from "./endPoint.js";
-import {showMovieDetail} from "./movieDetail.js";
+import {showMovieDetail,visitCompanyWebsite} from "./movieDetail.js";
 import {addContent} from './addContent.js';
 
 //selecting elements from web page.
+const mainHeader = document.querySelector('.main-header');
 const contentBox = document.querySelector('.content-box');
 const categoryBar = document.querySelector('.category-bar');
 const errorPage = document.querySelector('.error-page');
@@ -13,36 +14,37 @@ let searchBoxStatus = false;  //keeps track if search box is active of not.
 let page = 1;      //page number to fetch movies from specific page
 
 //Adds movies(now_playing i.e. trending) when page is loaded for first time.
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {  //made async so that fillWholePage() executes after addContent()
     currentCategory = 'now_playing';
     await addContent(endPoint.movieCollectionURL(currentCategory,page++));
     await addContent(endPoint.movieCollectionURL(currentCategory,page++));
     fillWholePage();    
     highlightCurrentCategory(currentCategory);
-    //fetchConfig();
 });
-
 
 //Adds movies when specific category is selected.
 categoryBar.addEventListener('click', e => {
+    if(Array.from(movieDetailContainer.classList).includes('show-container')){ 
+        hideMovieDetailContainer();
+        return;
+    }
+    
     contentBox.innerHTML = ``;      //clearing movies of previous category.
     page = 1;                       //resetting page number to 1.
-    searchBoxStatus = false;        
+    searchBoxStatus = false;
+    errorPage.classList.remove('show-error-message');        
 
     currentCategory = e.target.id;
     addContent(endPoint.movieCollectionURL(currentCategory,page++));
     addContent(endPoint.movieCollectionURL(currentCategory,page++));
     highlightCurrentCategory(currentCategory);
-    errorPage.classList.remove('show-error-message');
 });
 
 //Adds more movies if user reaches to end of page.
 window.addEventListener('scroll',() => {
     let webPageHeight = document.body.offsetHeight;
     let screenBottom = window.innerHeight + window.pageYOffset;
-    // console.log('webpageHeight: ',webPageHeight);
-    // console.log('windows.innerHeight: ',window.innerHeight,'window.pageYOffset',window.pageYOffset);
-    // console.log('ScrrenBottom: ',screenBottom);
+    
     if(screenBottom >= webPageHeight){
         if(searchBoxStatus){
             addContent(endPoint.movieSearchURL(currentCategory,page++));
@@ -61,35 +63,52 @@ const movieDetailContainer = document.querySelector('.movie-detail-container');
 searchButton.addEventListener('click',(e) => {
     e.preventDefault();
     let movieName = searchBox.value;
+    if(!movieName) {return;}
     movieName = movieName.split(" ").join("%20");
 
     contentBox.innerHTML = ``;      //clearing movies of previous category.
     page = 1;                       //resetting page number to 1.
     currentCategory = movieName;
     searchBoxStatus = true;
+    errorPage.classList.remove('show-error-message');
 
     addContent(endPoint.movieSearchURL(movieName,page++));
     addContent(endPoint.movieSearchURL(movieName,page++));
 
     searchBox.value = "";
     highlightCurrentCategory(currentCategory);
-    errorPage.classList.remove('show-error-message');
-    
 });
 
+
+/*----- movie-detail-Container events----*/
 //Shows detail of movies upon clicking of it's poster
-
 contentBox.addEventListener('click',e => {
-    const movieId = e.target.closest('.movie-template').dataset.id;
-    showMovieDetail(parseInt(movieId));
+    if(Array.from(movieDetailContainer.classList).includes('show-container')){ 
+        hideMovieDetailContainer();
+    }
+    else{
+        const movieId = e.target.closest('.movie-template').dataset.id;
+        showMovieDetail(parseInt(movieId));
+    }
 });
 
+//visit company's website if clicked on its log
+const companiesDetail = document.querySelector('.companies-detail');
+companiesDetail.addEventListener('click', e => {
+    const companyId = e.target.closest('.company-logo').dataset.companyId;
+    visitCompanyWebsite(companyId);
+});
 
 //closes movie detail container
-const closeContainerBtn = document.querySelector('.movie-detail-container .close-btn');
-
+const closeContainerBtn = document.querySelector('.close-btn');
 closeContainerBtn.addEventListener('click',() => {
-    movieDetailContainer.classList.remove('show-container');
+    hideMovieDetailContainer();    
+});
+//closes movie detail container when clicked anywhere except movie-detail-container
+mainHeader.addEventListener('click',() =>{
+    if(Array.from(movieDetailContainer.classList).includes('show-container')){
+        hideMovieDetailContainer();
+    }
 });
 
 /**********helper functions*********/
@@ -111,20 +130,24 @@ function highlightCurrentCategory(currentCategory){
     }
 }
 
+/* Adds more content if page is not filled by initial functions, useful when using ultra wide monitors*/
 async function fillWholePage(){
     const webpageHeight = document.body.offsetHeight;
     const windowHeight = window.innerHeight;
-    //console.log(document.body.offsetHeight, windowHeight);
     if(windowHeight >= webpageHeight){
         await addContent(endPoint.movieCollectionURL(currentCategory,page++));
-        //console.log("filling page");
         fillWholePage();
     }
 }
-/* development functions */
-function fetchConfig() {
-    fetch("https://api.themoviedb.org/3/configuration?api_key=b3759c68c67b48812f4293db327b6de9")
-        .then(response => response.json())
-        .then(data => console.log(data));
+function hideMovieDetailContainer(){ 
+    movieDetailContainer.classList.remove('show-container');
+    mainHeader.classList.remove('filter-background');
+    contentBox.classList.remove('filter-background');
 }
 
+//Makes movie-detail-container visible exported to movieDetails.js
+export function showMovieDetailContainer(){
+    movieDetailContainer.classList.add('show-container');
+    mainHeader.classList.add('filter-background');
+    contentBox.classList.add('filter-background');
+}

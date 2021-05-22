@@ -10,18 +10,21 @@
     text-transform: capitalize;
 }
 .movie-detail-container{
-    display: none;
     position: fixed;
     width: 90vw;
     height: auto;
     max-height: 80vh;
     background-image: url("https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg");
-    transform: translateX(-50%);
-    left: 50%;
-    top: 14.5vh;
+    left: 5vw;
+    top: 13.5vh;
     overflow-x: hidden ;
     overflow-y: auto;
     padding: 10px;
+    transform: scale(0);
+    transition: transform 0.25s ease-out;
+}
+.show-container{    /* toggles move-detail-visibility*/
+    transform: scale(1);
 }
 .movie-detail-container::after{
     position: absolute;
@@ -30,8 +33,8 @@
     left: 0; top: 0; right: 0; bottom: -70%;
     z-index: -1;
 }
-.show-container{    /* toggles move-detail-visibility*/
-    display:block;
+.movie-detail-header{
+    margin-bottom: 7px;
 }
 
 .close-btn{
@@ -41,11 +44,19 @@
     top: 5px;
     margin: 5px 10px;
     font-size: 100%;
+    cursor: pointer;
+    z-index: 2;
 }
 .close-btn i:hover{
     color: rgb(230, 6, 6);
-    transform: scale(1.5);
+    animation: closeBtnRotate 1s 1 forwards;
 }
+@keyframes closeBtnRotate{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 
 /*details css*/
 .movie-detail-container .movie-name{
@@ -59,12 +70,12 @@
     display: inline-block;
     background-color: rgb(13, 156, 61);
     padding: 2px 8px;
+    margin-right: 15px;
     border-radius: 5px;
     color: white;
     font: .9rem var(--font-para3);
 }
 .movie-image{
-    margin-top: 10px;
     width: 100%;
 }
 .overview p{
@@ -73,7 +84,7 @@
 }
 .watch-trailer{
     display: inline-block;
-    background-color: var(--color-matteBlack);
+    background-color: var(--color-greyBlack);
     border-radius: 5px;
     color: white;
     font-family: var(--font-para3);
@@ -158,13 +169,19 @@
 /* media queries */
 @media (min-width:580px) {
     .movie-detail-container{
+        overflow-y: hidden;
+    }
+    .movie-detail-container article{
         columns:2;
         top: 18vh;
-        overflow-y: hidden;
+    }
+    .close-btn{
+        transform: scale(1.2);
     }
 }
 @media (min-width:830px){
     .movie-detail-container{ 
         width: 70vw;
+        left: 15vw;
     }   
 }
