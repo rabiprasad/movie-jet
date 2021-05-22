@@ -15,8 +15,7 @@
     height: auto;
     max-height: 80vh;
     background-image: url("https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg");
-    left: 5vw;
-    top: 13.5vh;
+    left: 5vw; top: 13.5vh;
     overflow-x: hidden ;
     overflow-y: auto;
     padding: 10px;
@@ -60,7 +59,7 @@
 
 /*details css*/
 .movie-detail-container .movie-name{
-    display: inline-block;
+    display: inline;
     font: 1.1rem var(--font-heading2);
     margin:0px;
     letter-spacing: 0.1rem;
@@ -70,7 +69,7 @@
     display: inline-block;
     background-color: rgb(13, 156, 61);
     padding: 2px 8px;
-    margin-right: 15px;
+    margin-right: 16px;
     border-radius: 5px;
     color: white;
     font: .9rem var(--font-para3);
@@ -169,6 +168,7 @@
 /* media queries */
 @media (min-width:580px) {
     .movie-detail-container{
+        top: 16vh;
         overflow-y: hidden;
     }
     .movie-detail-container article{
@@ -182,6 +182,6 @@
 @media (min-width:830px){
     .movie-detail-container{ 
         width: 70vw;
-        left: 15vw;
+        top:14vh; left: 15vw;
     }   
 }

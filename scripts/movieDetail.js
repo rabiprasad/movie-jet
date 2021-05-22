@@ -1,5 +1,5 @@
 import * as endPoint from './endPoint.js';
-import {showMovieDetailContainer} from './app.js'
+import {showMovieDetailContainer} from './main.js'
 
 const movieDetailContainer = document.querySelector('.movie-detail-container');
 

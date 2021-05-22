@@ -6,12 +6,14 @@ import {addContent} from './addContent.js';
 const mainHeader = document.querySelector('.main-header');
 const contentBox = document.querySelector('.content-box');
 const categoryBar = document.querySelector('.category-bar');
+const movieDetailContainer = document.querySelector('.movie-detail-container');
 const errorPage = document.querySelector('.error-page');
+const scrollTopBtn = document.querySelector('.scroll-top');
 const categories = categoryBar.children;
 
-let currentCategory;  //keeps track of current category selected
-let searchBoxStatus = false;  //keeps track if search box is active of not.
-let page = 1;      //page number to fetch movies from specific page
+let currentCategory;            //keeps track of current category selected
+let searchBoxStatus = false;    //keeps track if search box is active of not.
+let page = 1;                   //page number to fetch movies from specific page
 
 //Adds movies(now_playing i.e. trending) when page is loaded for first time.
 document.addEventListener('DOMContentLoaded', async () => {  //made async so that fillWholePage() executes after addContent()
@@ -24,11 +26,6 @@ document.addEventListener('DOMContentLoaded', async () => {  //made async so tha
 
 //Adds movies when specific category is selected.
 categoryBar.addEventListener('click', e => {
-    if(Array.from(movieDetailContainer.classList).includes('show-container')){ 
-        hideMovieDetailContainer();
-        return;
-    }
-    
     contentBox.innerHTML = ``;      //clearing movies of previous category.
     page = 1;                       //resetting page number to 1.
     searchBoxStatus = false;
@@ -41,11 +38,12 @@ categoryBar.addEventListener('click', e => {
 });
 
 //Adds more movies if user reaches to end of page.
+//adds scroll-top button on reaching certain length of page
 window.addEventListener('scroll',() => {
     let webPageHeight = document.body.offsetHeight;
     let screenBottom = window.innerHeight + window.pageYOffset;
     
-    if(screenBottom >= webPageHeight){
+    if(screenBottom >= webPageHeight-(window.innerHeight/3)){
         if(searchBoxStatus){
             addContent(endPoint.movieSearchURL(currentCategory,page++));
         }
@@ -53,12 +51,17 @@ window.addEventListener('scroll',() => {
         addContent(endPoint.movieCollectionURL(currentCategory,page++));
         }
     }
+    
+    if(window.pageYOffset > window.innerHeight * 3){
+        scrollTopBtn.classList.add('show-btn');
+    }else if(window.pageYOffset <= window.innerHeight * 2){
+        scrollTopBtn.classList.remove('show-btn');
+    }
 });
 
 /****  search-bar eventListener  ****/
 const searchBox = document.querySelector('.search-box');
 const searchButton = document.querySelector('.search-button');
-const movieDetailContainer = document.querySelector('.movie-detail-container');
 
 searchButton.addEventListener('click',(e) => {
     e.preventDefault();
@@ -79,17 +82,20 @@ searchButton.addEventListener('click',(e) => {
     highlightCurrentCategory(currentCategory);
 });
 
+/* scrolls to Top of page */
+scrollTopBtn.addEventListener('click',() => {
+    console.log('hello')
+    window.scroll({
+        top: 0,
+        behaviour: "smooth"
+    });
+})
 
 /*----- movie-detail-Container events----*/
 //Shows detail of movies upon clicking of it's poster
 contentBox.addEventListener('click',e => {
-    if(Array.from(movieDetailContainer.classList).includes('show-container')){ 
-        hideMovieDetailContainer();
-    }
-    else{
-        const movieId = e.target.closest('.movie-template').dataset.id;
-        showMovieDetail(parseInt(movieId));
-    }
+    const movieId = e.target.closest('.movie-template').dataset.id;
+    showMovieDetail(parseInt(movieId));
 });
 
 //visit company's website if clicked on its log
@@ -103,12 +109,6 @@ companiesDetail.addEventListener('click', e => {
 const closeContainerBtn = document.querySelector('.close-btn');
 closeContainerBtn.addEventListener('click',() => {
     hideMovieDetailContainer();    
-});
-//closes movie detail container when clicked anywhere except movie-detail-container
-mainHeader.addEventListener('click',() =>{
-    if(Array.from(movieDetailContainer.classList).includes('show-container')){
-        hideMovieDetailContainer();
-    }
 });
 
 /**********helper functions*********/
@@ -143,6 +143,7 @@ function hideMovieDetailContainer(){
     movieDetailContainer.classList.remove('show-container');
     mainHeader.classList.remove('filter-background');
     contentBox.classList.remove('filter-background');
+    scrollTopBtn.classList.remove('filter-background');
 }
 
 //Makes movie-detail-container visible exported to movieDetails.js
@@ -150,4 +151,5 @@ export function showMovieDetailContainer(){
     movieDetailContainer.classList.add('show-container');
     mainHeader.classList.add('filter-background');
     contentBox.classList.add('filter-background');
+    scrollTopBtn.classList.add('filter-background');
 }
