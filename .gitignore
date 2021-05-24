@@ -1,4 +1,10 @@
 .vscode
 
-//Contains Api key check private.js.example file. 
-private.js
+node_modules
+
+dist
+
+.env
+
+# Local Netlify folder
+.netlify

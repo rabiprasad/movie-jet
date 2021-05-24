@@ -16,8 +16,8 @@
     max-height: 80vh;
     background-image: url("https://image.tmdb.org/t/p/w1280/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg");
     left: 5vw; top: 13.5vh;
-    overflow-x: hidden ;
-    overflow-y: auto;
+    overflow-x: hidden ; overflow-y: auto;
+    z-index: 1;
     padding: 10px;
     transform: scale(0);
     transition: transform 0.25s ease-out;
@@ -44,7 +44,6 @@
     margin: 5px 10px;
     font-size: 100%;
     cursor: pointer;
-    z-index: 2;
 }
 .close-btn i:hover{
     color: rgb(230, 6, 6);

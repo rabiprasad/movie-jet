@@ -84,10 +84,9 @@ searchButton.addEventListener('click',(e) => {
 
 /* scrolls to Top of page */
 scrollTopBtn.addEventListener('click',() => {
-    console.log('hello')
     window.scroll({
         top: 0,
-        behaviour: "smooth"
+        behavior: "smooth"
     });
 })
 

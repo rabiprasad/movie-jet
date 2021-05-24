@@ -1,4 +1,4 @@
-import {API_KEY} from '../private.js';
+const API_KEY = process.env.API_KEY;
 
 /*returns url according to category and page required.
 One page contains limited movie details.
