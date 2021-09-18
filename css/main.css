@@ -1,147 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&family=Montserrat&family=PT+Sans&family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Montserrat&family=PT+Sans&family=Righteous&display=swap");
 
-:root{
-    --color-primary1:#053155;
-    --color-greyBlack:rgb(75, 73, 73);
-    --color-matteBlack: rgb(41, 34, 34);
+:root {
+  --color-primary1: #053155;
+  --color-greyBlack: rgb(75, 73, 73);
+  --color-matteBlack: rgb(41, 34, 34);
 
-    --font-heading2:  'Righteous', cursive;
-    --font-heading3: "proxima-nova","Gotham","Helvetica Neue",Helvetica,Arial,sans-serif;
-    --font-list: 'Itim', cursive;
-    --font-para2: 'PT Sans', sans-serif;
-    --font-para3: 'Montserrat', sans-serif;
-
+  --font-heading2: "Righteous", cursive;
+  --font-heading3: "proxima-nova", "Gotham", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-list: "Itim", cursive;
+  --font-para2: "PT Sans", sans-serif;
+  --font-para3: "Montserrat", sans-serif;
 }
-*,::after,::before{
-    box-sizing:border-box;
+*,
+::after,
+::before {
+  box-sizing: border-box;
 }
-body{
-    margin:0px;
-}
-
-.filter-background{    /* toggle to blur/un blur */
-    filter: blur(2px);
-    pointer-events: none;
+body {
+  margin: 0px;
 }
 
-.main-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 10px 5px 50px 5px;
-    gap: 10px;
-    transition: filter 0.25s ease;
+/* toggle to blur/un blur */
+.filter-background {
+  filter: blur(2px);
+  pointer-events: none;
 }
-.heading{
-    justify-self: center;
-    text-align:center;
-    font:3rem var(--font-heading2);
-    order: 1;
-    margin:0px;
-    letter-spacing: 0.1rem;
-    color: var(--color-primary1);
+
+.main-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 5px 50px 5px;
+  gap: 10px;
+  transition: filter 0.25s ease;
+}
+.heading {
+  justify-self: center;
+  text-align: center;
+  font: 3rem var(--font-heading2);
+  order: 1;
+  margin: 0px;
+  letter-spacing: 0.1rem;
+  color: var(--color-primary1);
 }
 
 /* categories */
-.category-bar{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    list-style-type:none;
-    padding:0;
-    border:2px solid var(--color-primary1) ;
-    border-radius:20px;
-    margin: 0px;   
+.category-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  border: 2px solid var(--color-primary1);
+  border-radius: 20px;
+  margin: 0px;
 }
-.category-bar li{
-    padding:3px 8px;
-    margin: 0px 5px;
-    cursor:pointer;
-    font-family: Var(--font-list);
+.category-bar li {
+  padding: 3px 8px;
+  margin: 0px 5px;
+  cursor: pointer;
+  font-family: Var(--font-list);
 }
 /* current category highlighter */
-.current-category{
-    transform: scale(1.2);
-    color: white;
-    background-color:var(--color-primary1);
-    border-radius:20px;
+.current-category {
+  transform: scale(1.2);
+  color: white;
+  background-color: var(--color-primary1);
+  border-radius: 20px;
 }
 
 /* search */
-.search-bar{
-    min-width: 200px;
-    width:30%; height:35px;
-    border:3px solid var(--color-primary1);
-    border-radius:20px;
-    overflow:hidden;
-    order: 2;
+.search-bar {
+  min-width: 200px;
+  width: 30%;
+  height: 35px;
+  border: 3px solid var(--color-primary1);
+  border-radius: 20px;
+  overflow: hidden;
+  order: 2;
 }
-.search-box{
-    width: 85%;
-    height: 100%;
-    font-size: 1.2rem;
-    text-align: center;
-    cursor: text;
-    outline: none;
-    border: none;
-    font-family: var(--font-list);
+.search-box {
+  width: 85%;
+  height: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: text;
+  outline: none;
+  border: none;
+  font-family: var(--font-list);
 }
-.search-button{
-    display:grid;
-    place-items:center;
-    float:right;
-    width: 15%; height:100%;
-    border:none;
-    color: var(--color-primary1);
-    border-left:2px solid var(--color-primary1);
-    background: none;
-    font-size:1.5rem;
-    cursor : pointer;
+.search-button {
+  display: grid;
+  place-items: center;
+  float: right;
+  width: 15%;
+  height: 100%;
+  border: none;
+  color: var(--color-primary1);
+  border-left: 2px solid var(--color-primary1);
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 /* button to scroll-to-top */
-.scroll-top{
-    display: none;
-    position: fixed;
-    font-size: 1.5rem;
-    color: white;
-    background-color: var(--color-primary1);
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-    right: 1vw; bottom: 1vh;
-    cursor: pointer;
+.scroll-top {
+  display: none;
+  position: fixed;
+  font-size: 1.5rem;
+  color: white;
+  background-color: var(--color-primary1);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  right: 1vw;
+  bottom: 1vh;
+  cursor: pointer;
 }
-.show-btn{  /* toggles display of btn*/
-    display: block;
-    animation:size-animation .5s 4 alternate ;
+/* toggles display of btn*/
+.show-btn {
+  display: block;
+  animation: size-animation 0.5s 4 alternate;
 }
-@keyframes size-animation{
-    100%{
-        transform: scale(1.3);
-    }
+@keyframes size-animation {
+  100% {
+    transform: scale(1.3);
+  }
+}
+/*scrollbar properties*/
+body::-webkit-scrollbar {
+  width: 0.75em;
 }
 
-::-webkit-scrollbar{
-    width: 50%;
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 5px;
 }
 
 /*-----media queries----------*/
-@media (max-width:845px){
-    .heading{
-        order: -2; 
-        margin-bottom: 0px;
-    }
-    .search-bar{
-        width: 90%;
-    }
-    .main-header{
-        flex-wrap: wrap;
-    }
+@media (max-width: 845px) {
+  .heading {
+    order: -2;
+    margin-bottom: 0px;
+  }
+  .search-bar {
+    width: 90%;
+  }
+  .main-header {
+    flex-wrap: wrap;
+  }
 }
-@media (max-width:380px){
-    .category-bar li{
-        padding:3px 6px;
-        margin: 0px 3px;
-    }
+@media (max-width: 380px) {
+  .category-bar li {
+    padding: 3px 6px;
+    margin: 0px 3px;
+  }
 }
